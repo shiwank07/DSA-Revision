@@ -51,6 +51,20 @@ class BinarySearchTrees{
         }
     }
 
+    bool containes(int value){
+        Node* temp = root;
+        while (temp){
+            if (value < temp->value){
+                temp = temp->left;
+            } else if (value > temp->value){
+                temp = temp->right;
+            } else {
+                return true;
+            }
+        }
+        return false;    
+    }
+
     void inOrderPrint(Node* node) {
         if (node == nullptr) return;
         inOrderPrint(node->left);
@@ -76,9 +90,11 @@ int main(){
     MyBst->insert(10);
     MyBst->insert(48);
     MyBst->insert(9);
-    
-    MyBst->printTree();
 
+    cout << "Contains 10:" << MyBst->containes(10) << endl;
+    cout << "Contains 11:" << MyBst->containes(11) << endl;
+
+    MyBst->printTree();
 
     return 0;
 }
